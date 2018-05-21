@@ -12,6 +12,8 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JTextPane;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Ventana extends JFrame {
 
@@ -53,10 +55,6 @@ public class Ventana extends JFrame {
 		getContentPane().setLayout(null);
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		JButton btnNewButton = new JButton("Calcular");
-		btnNewButton.setBounds(622, 76, 127, 62);
-		contentPane.add(btnNewButton);
 		
 		JLabel Punto = new JLabel("");
 		Punto.setIcon(new ImageIcon(Ventana.class.getResource("/img/Punto.png")));
@@ -118,10 +116,6 @@ public class Ventana extends JFrame {
 		textY.setBounds(90, 296, 50, 27);
 		contentPane.add(textY);
 		
-		JButton btnCalxyz = new JButton("Calcular");
-		btnCalxyz.setBounds(62, 379, 114, 35);
-		contentPane.add(btnCalxyz);
-		
 		JLabel label = new JLabel("Km");
 		label.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		label.setBounds(150, 296, 39, 26);
@@ -131,11 +125,6 @@ public class Ventana extends JFrame {
 		label_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		label_1.setBounds(150, 331, 39, 26);
 		contentPane.add(label_1);
-		
-		JLabel lbPlano = new JLabel("");
-		lbPlano.setIcon(new ImageIcon(Ventana.class.getResource("/img/Captura1.png")));
-		lbPlano.setBounds(25, 181, 961, 479);
-		contentPane.add(lbPlano);
 		
 		JLabel lblNewLabel_1 = new JLabel("Resultado");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 30));
@@ -186,6 +175,20 @@ public class Ventana extends JFrame {
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		lblNewLabel_2.setBounds(293, 0, 510, 50);
 		contentPane.add(lblNewLabel_2);
+		
+		JButton btnCalcular = new JButton("Calcular");
+		btnCalcular.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
+		btnCalcular.setBounds(62, 379, 114, 35);
+		contentPane.add(btnCalcular);
+		
+		JLabel lbPlano = new JLabel("");
+		lbPlano.setIcon(new ImageIcon(Ventana.class.getResource("/img/Captura1.png")));
+		lbPlano.setBounds(25, 181, 961, 479);
+		contentPane.add(lbPlano);
 		
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setIcon(new ImageIcon(Ventana.class.getResource("/img/fondo.jpg")));
