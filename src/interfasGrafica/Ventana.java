@@ -6,6 +6,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import java.awt.Font;
@@ -14,14 +15,17 @@ import javax.swing.JButton;
 import javax.swing.JTextPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JCheckBox;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+import javax.swing.JComboBox;
 
 public class Ventana extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	private JTextField textQ;
+	private JTextField textH;
+	private JTextField textU;
 	private JTextField textX;
 	private JTextField textY;
 	private JTextField textZ;
@@ -131,25 +135,20 @@ public class Ventana extends JFrame {
 		lblNewLabel_1.setBounds(438, 145, 187, 35);
 		contentPane.add(lblNewLabel_1);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(476, 112, 84, 26);
-		contentPane.add(textField_3);
+		textU = new JTextField();
+		textU.setColumns(10);
+		textU.setBounds(452, 59, 108, 26);
+		contentPane.add(textU);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(452, 59, 108, 26);
-		contentPane.add(textField_2);
+		textH = new JTextField();
+		textH.setColumns(10);
+		textH.setBounds(142, 112, 118, 26);
+		contentPane.add(textH);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(142, 112, 118, 26);
-		contentPane.add(textField_1);
-		
-		textField = new JTextField();
-		textField.setBounds(142, 59, 118, 26);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		textQ = new JTextField();
+		textQ.setBounds(142, 59, 118, 26);
+		contentPane.add(textQ);
+		textQ.setColumns(10);
 		
 		JLabel lblEstabilidad = new JLabel("Estabilidad =");
 		lblEstabilidad.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -176,12 +175,52 @@ public class Ventana extends JFrame {
 		lblNewLabel_2.setBounds(293, 0, 510, 50);
 		contentPane.add(lblNewLabel_2);
 		
+		JComboBox comboEst = new JComboBox();
+		comboEst.setMaximumRowCount(10);
+		comboEst.setBounds(462, 99, 50, 35);
+		contentPane.add(comboEst);
+		comboEst.addItem(" A");
+		comboEst.addItem(" B");
+		comboEst.addItem(" C");
+		comboEst.addItem(" D");
+		comboEst.addItem(" E");
+		comboEst.addItem(" F");
+		
 		JButton btnCalcular = new JButton("Calcular");
 		btnCalcular.addActionListener(new ActionListener() {
+			double q,h,u,x,y,z;
+			String vect[]=new String[6];					
 			public void actionPerformed(ActionEvent arg0) {
+				// Obteniendo los datos	
+				
+				if(!Comprobacion()) {
+					System.out.println("lleno");
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "Todos los campos Tienen que ser llenados", "\tError", 0);
+				}
+				System.out.println(comboEst.getSelectedIndex());
+				
 				
 			}
+			private boolean Comprobacion() {
+				vect[0]=textQ.getText();
+				vect[1]=textH.getText();
+				vect[2]=textU.getText();				
+				vect[3]=textX.getText();
+				vect[4]=textY.getText();
+				vect[5]=textZ.getText();
+				boolean sw=false;
+				for(int i=0;i<6;i++) {
+					if(vect[i].equals(""))
+						sw=true;
+				}
+				return sw;
+			}
+			
 		});
+		
+		
 		btnCalcular.setBounds(62, 379, 114, 35);
 		contentPane.add(btnCalcular);
 		
