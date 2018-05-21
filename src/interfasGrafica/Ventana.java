@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import codigo.codigo;
+
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import java.awt.Font;
@@ -19,6 +21,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
+import javax.swing.JTextArea;
 
 public class Ventana extends JFrame {
 
@@ -186,22 +189,49 @@ public class Ventana extends JFrame {
 		comboEst.addItem(" E");
 		comboEst.addItem(" F");
 		
+		JTextArea Resultado = new JTextArea();
+		Resultado.setBounds(431, 199, 144, 72);
+		contentPane.add(Resultado);
+		
 		JButton btnCalcular = new JButton("Calcular");
 		btnCalcular.addActionListener(new ActionListener() {
-			double q,h,u,x,y,z;
-			String vect[]=new String[6];					
+			double v[]=new double[6];
+			String vect[]=new String[6];	
+			double res[]=new double [3];
 			public void actionPerformed(ActionEvent arg0) {
 				// Obteniendo los datos	
 				
 				if(!Comprobacion()) {
-					System.out.println("lleno");
+					if(validarDouble()) {
+						codigo c=new codigo();
+						res[1]=c.y(v[3], comboEst.getSelectedIndex());
+						res[2]=c.z(v[3], comboEst.getSelectedIndex());
+						res[0]=c.calcular(v[0], v[1], v[2], comboEst.getSelectedIndex(), v[4], v[5]);
+						Resultado.setText("");
+						for(int i=0;i<3;i++) {							
+							Resultado.setText(Resultado.getText()+res[i]+"\n");
+						}
+					}else {
+						JOptionPane.showMessageDialog(null, "Ingrese solo Numeros, Decimal con punto (.)", "Error", 0);
+					}
 				}
 				else {
 					JOptionPane.showMessageDialog(null, "Todos los campos Tienen que ser llenados", "\tError", 0);
 				}
-				System.out.println(comboEst.getSelectedIndex());
+			
 				
 				
+			}
+			private boolean validarDouble() {
+				boolean sw=true;
+				for(int i=0;i<6;i++) {				
+					if(isNumericInt(vect[i])==true | isNumericDoub(vect[i])==true) {
+						v[i]=Double.parseDouble(vect[i]);						
+					}
+					else
+						sw=false;
+				}
+				return sw;
 			}
 			private boolean Comprobacion() {
 				vect[0]=textQ.getText();
@@ -217,8 +247,27 @@ public class Ventana extends JFrame {
 				}
 				return sw;
 			}
+			private boolean isNumericInt(String cad){
+				try {
+					Integer.parseInt(cad);					
+					return true;
+				} catch (NumberFormatException nfe){
+					return false;
+				}
+			}
+			private boolean isNumericDoub(String cad){
+				try {
+					Double.parseDouble(cad);					
+					return true;
+				} catch (NumberFormatException nfe){
+					return false;
+				}
+			}
+			
 			
 		});
+		
+		
 		
 		
 		btnCalcular.setBounds(62, 379, 114, 35);
