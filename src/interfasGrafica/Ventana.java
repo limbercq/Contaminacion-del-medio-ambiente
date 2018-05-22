@@ -16,12 +16,17 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JTextPane;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 import java.awt.event.ActionEvent;
 import javax.swing.JCheckBox;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
 import javax.swing.JTextArea;
+import java.awt.Color;
+import java.awt.Component;
+import javax.swing.SwingConstants;
 
 public class Ventana extends JFrame {
 
@@ -62,34 +67,37 @@ public class Ventana extends JFrame {
 		getContentPane().setLayout(null);
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+				
 		JLabel Punto = new JLabel("");
 		Punto.setIcon(new ImageIcon(Ventana.class.getResource("/img/Punto.png")));
-		Punto.setBounds(408, 364, 25, 25);
+		
 		contentPane.add(Punto);
 		
 		JLabel lbArriba = new JLabel("");
 		lbArriba.setIcon(new ImageIcon(Ventana.class.getResource("/img/arriba.png")));
-		lbArriba.setBounds(396, 497, 50, 50);
+		
 		contentPane.add(lbArriba);
 		
 		JLabel lbAbajo = new JLabel("");
 		lbAbajo.setIcon(new ImageIcon(Ventana.class.getResource("/img/abajo.png")));
-		lbAbajo.setBounds(185, 445, 50, 50);
+		
 		contentPane.add(lbAbajo);
 		
 		JLabel lbIzquierda = new JLabel("");
 		lbIzquierda.setIcon(new ImageIcon(Ventana.class.getResource("/img/izquierda.png")));
-		lbIzquierda.setBounds(160, 364, 39, 35);
+		
 		contentPane.add(lbIzquierda);
 		
+		lbArriba.setBounds(192, 493, 50, 50);
+		lbAbajo.setBounds(244, 426, 50, 50);
+		lbIzquierda.setBounds(136, 473, 39, 35);
 		JLabel lblNewLabel_4 = new JLabel("Ingrese datos");
-		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 26));
-		lblNewLabel_4.setBounds(36, 213, 224, 35);
+		lblNewLabel_4.setFont(new Font("Poor Richard", Font.PLAIN, 34));
+		lblNewLabel_4.setBounds(36, 198, 224, 50);
 		contentPane.add(lblNewLabel_4);
 		
 		JLabel lblX = new JLabel("X = ");
-		lblX.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblX.setFont(new Font("Script MT Bold", Font.PLAIN, 20));
 		lblX.setBounds(53, 259, 39, 26);
 		contentPane.add(lblX);
 		
@@ -99,17 +107,17 @@ public class Ventana extends JFrame {
 		textX.setColumns(10);
 		
 		JLabel lblY = new JLabel("Y = ");
-		lblY.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblY.setFont(new Font("Script MT Bold", Font.PLAIN, 20));
 		lblY.setBounds(53, 296, 39, 26);
 		contentPane.add(lblY);
 		
 		JLabel lblZ = new JLabel("Z = ");
-		lblZ.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblZ.setFont(new Font("Script MT Bold", Font.PLAIN, 20));
 		lblZ.setBounds(53, 331, 39, 26);
 		contentPane.add(lblZ);
 		
 		JLabel lblKm = new JLabel("Km");
-		lblKm.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblKm.setFont(new Font("Script MT Bold", Font.PLAIN, 20));
 		lblKm.setBounds(148, 259, 39, 26);
 		contentPane.add(lblKm);
 		
@@ -124,63 +132,68 @@ public class Ventana extends JFrame {
 		contentPane.add(textY);
 		
 		JLabel label = new JLabel("Km");
-		label.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		label.setFont(new Font("Script MT Bold", Font.PLAIN, 20));
 		label.setBounds(150, 296, 39, 26);
 		contentPane.add(label);
 		
 		JLabel label_1 = new JLabel("Km");
-		label_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		label_1.setFont(new Font("Script MT Bold", Font.PLAIN, 20));
 		label_1.setBounds(150, 331, 39, 26);
 		contentPane.add(label_1);
 		
 		JLabel lblNewLabel_1 = new JLabel("Resultado");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lblNewLabel_1.setFont(new Font("Script MT Bold", Font.BOLD, 39));
 		lblNewLabel_1.setBounds(438, 145, 187, 35);
 		contentPane.add(lblNewLabel_1);
 		
 		textU = new JTextField();
+		textU.setAlignmentX(Component.RIGHT_ALIGNMENT);
+		textU.setOpaque(false);
 		textU.setColumns(10);
-		textU.setBounds(452, 59, 108, 26);
+		textU.setBounds(531, 59, 108, 26);
 		contentPane.add(textU);
 		
 		textH = new JTextField();
+		textH.setOpaque(false);
 		textH.setColumns(10);
-		textH.setBounds(142, 112, 118, 26);
+		textH.setBounds(232, 112, 118, 26);
 		contentPane.add(textH);
 		
 		textQ = new JTextField();
-		textQ.setBounds(142, 59, 118, 26);
+		textQ.setOpaque(false);
+		textQ.setBounds(232, 59, 118, 26);
 		contentPane.add(textQ);
 		textQ.setColumns(10);
 		
 		JLabel lblEstabilidad = new JLabel("Estabilidad =");
-		lblEstabilidad.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblEstabilidad.setBounds(328, 108, 118, 26);
+		lblEstabilidad.setFont(new Font("Script MT Bold", Font.PLAIN, 20));
+		lblEstabilidad.setBounds(415, 108, 118, 26);
 		contentPane.add(lblEstabilidad);
 		
 		JLabel lblUms = new JLabel("u [m/s] =");
-		lblUms.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblUms.setBounds(348, 59, 98, 26);
+		lblUms.setFont(new Font("Script MT Bold", Font.PLAIN, 20));
+		lblUms.setBounds(435, 59, 98, 26);
 		contentPane.add(lblUms);
 		
 		JLabel lblHm = new JLabel("H [m] =");
-		lblHm.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblHm.setBounds(53, 108, 98, 26);
+		lblHm.setFont(new Font("Script MT Bold", Font.PLAIN, 20));
+		lblHm.setBounds(124, 108, 98, 26);
 		contentPane.add(lblHm);
 		
 		JLabel lblNewLabel_3 = new JLabel("Q [g/s] =");
-		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel_3.setBounds(53, 59, 98, 26);
+		lblNewLabel_3.setFont(new Font("Script MT Bold", Font.PLAIN, 20));
+		lblNewLabel_3.setBounds(124, 55, 98, 26);
 		contentPane.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_2 = new JLabel("Contaminacion del medio ambiente");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		lblNewLabel_2.setBounds(293, 0, 510, 50);
+		lblNewLabel_2.setFont(new Font("Vivaldi", Font.PLAIN, 50));
+		lblNewLabel_2.setBounds(264, -2, 575, 50);
 		contentPane.add(lblNewLabel_2);
 		
 		JComboBox comboEst = new JComboBox();
+		comboEst.setBackground(Color.WHITE);
 		comboEst.setMaximumRowCount(10);
-		comboEst.setBounds(462, 99, 50, 35);
+		comboEst.setBounds(541, 108, 50, 26);
 		contentPane.add(comboEst);
 		comboEst.addItem(" A");
 		comboEst.addItem(" B");
@@ -189,11 +202,18 @@ public class Ventana extends JFrame {
 		comboEst.addItem(" E");
 		comboEst.addItem(" F");
 		
+		
 		JTextArea Resultado = new JTextArea();
-		Resultado.setBounds(431, 199, 144, 72);
+		Resultado.setOpaque(false);
+		Resultado.setEditable(false);
+		Resultado.setBounds(427, 213, 144, 55);
 		contentPane.add(Resultado);
 		
 		JButton btnCalcular = new JButton("Calcular");
+		btnCalcular.setFont(new Font("Poor Richard", Font.PLAIN, 17));
+		btnCalcular.setBorderPainted(false);
+		btnCalcular.setContentAreaFilled(false);
+		btnCalcular.setIcon(new ImageIcon(Ventana.class.getResource("/img/calcular.png")));
 		btnCalcular.addActionListener(new ActionListener() {
 			double v[]=new double[6];
 			String vect[]=new String[6];	
@@ -208,9 +228,10 @@ public class Ventana extends JFrame {
 						res[2]=c.z(v[3], comboEst.getSelectedIndex());
 						res[0]=c.calcular(v[0], v[1], v[2], comboEst.getSelectedIndex(), v[4], v[5]);
 						Resultado.setText("");
-						for(int i=0;i<3;i++) {							
+						for(int i=0;i<3;i++) {								
 							Resultado.setText(Resultado.getText()+res[i]+"\n");
 						}
+						posicion(v[3],v[4],v[5]);
 					}else {
 						JOptionPane.showMessageDialog(null, "Ingrese solo Numeros, Decimal con punto (.)", "Error", 0);
 					}
@@ -221,6 +242,65 @@ public class Ventana extends JFrame {
 			
 				
 				
+			}
+			// Punto 
+			private void posicion(double x, double y, double z) {
+				int rx=(int) x,ry=(int) y,rz=(int) z;
+				int p[][]=new int [4][9] ; 
+				int q[][]=new int [3][9] ; 
+				
+				p[0][0]=220; p[0][1]=237; p[0][2]=297; p[0][3]=327; p[0][4]=393; p[0][5]=500; p [0][6]=659; p [0][7]=860 ; p [0][8]=920;
+				// 10 20 50 100 150
+				p[1][0]=439; p[1][1]=391; p[1][2]=327; p[1][3]=269; p[1][4]=251; p [1][5]=177;
+				// 1 5 10 50 100 150 
+				p[2][0]=190; p[2][1]=173; p[2][2]=155; p[2][3]=177; p[2][4]=80;
+				p[3][0]=543; p[3][1]=560; p[3][2]=577; p[3][3]=605; p[3][4]=641;
+				
+				q[0][0]=1; q[0][1]=2; q[0][2]=5; q[0][3]=10; q[0][4]=20; q[0][5]=50; q [0][6]=100; q [0][7]=150 ; 
+				
+				q[1][0]=10; q[1][1]=20; q[1][2]=50; q[1][3]=100; q[1][4]=150;
+				q[2][0]=1; q[2][1]=5; q[2][2]=50; q[2][3]=100; q[2][4]=150;
+				int i=1;boolean sw=false;
+				if(rx!=0) {
+					
+					while(i<9 & sw==false) {
+						System.out.println(rx+" <= "+q[0][i-1]+" __ "+i);
+						if(rx<=150) {
+							if(rx<=q[0][i-1]) {
+								if(rx==q[0][i-1])
+									rx=p[0][i-1];
+								else
+									rx=p[0][i-1]-(int)((p[0][i]-p[0][i-1])/2);
+								sw=true;
+							}
+						}else
+							rx= p [0][8]=920;;
+						i++;
+						
+					}
+				}else
+					rx=192;
+				
+				sw=false; i=0;
+				while(i<4 & sw==false) {
+					if(ry<=q[1][i]) {
+						if(ry==q[1][i])
+							ry=p[1][i];
+						else
+							ry=p[1][i]-((p[1][i]-p[1][i+1])/2);
+						sw=true;
+					}
+					i++;
+				}
+				
+				
+				
+				System.out.println(rx);
+				
+				lbArriba.setBounds(rx, 492, 50, 50);
+				/*lbAbajo.setBounds(185, 445, 50, 50); 190*/
+				lbIzquierda.setBounds(175, ry, 39, 35);
+				Punto.setBounds(rx, 194, 25, 25);
 			}
 			private boolean validarDouble() {
 				boolean sw=true;
@@ -270,13 +350,59 @@ public class Ventana extends JFrame {
 		
 		
 		
-		btnCalcular.setBounds(62, 379, 114, 35);
+		btnCalcular.setBounds(36, 369, 152, 60);
 		contentPane.add(btnCalcular);
+		
+		JButton btnLimpiar = new JButton("Limpiar");
+		btnLimpiar.setFont(new Font("Poor Richard", Font.PLAIN, 17));
+		btnLimpiar.setBorderPainted(false);
+		btnLimpiar.setOpaque(false);
+		btnLimpiar.setContentAreaFilled(false);
+		btnLimpiar.setIcon(new ImageIcon(Ventana.class.getResource("/img/limpiar.png")));
+		btnLimpiar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				textX.setText("");
+				textY.setText("");
+				textZ.setText("");
+			}
+		});
+		btnLimpiar.setBounds(36, 440, 152, 55);
+		contentPane.add(btnLimpiar);
+		
+		JButton btnLimpiarTodo = new JButton("");
+		btnLimpiarTodo.setVerticalTextPosition(SwingConstants.BOTTOM);
+		btnLimpiarTodo.setBorderPainted(false);
+		btnLimpiarTodo.setIcon(new ImageIcon(Ventana.class.getResource("/img/borrar.png")));
+		btnLimpiarTodo.setOpaque(false);
+		btnLimpiarTodo.setContentAreaFilled(false);
+		btnLimpiarTodo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textQ.setText("");
+				textH.setText("");
+				textU.setText("");				
+				textX.setText("");
+				textY.setText("");
+				textZ.setText("");
+			}
+		});
+		
+		JLabel lblNewLabel = new JLabel("Borrar Todo");
+		lblNewLabel.setFont(new Font("Script MT Bold", Font.PLAIN, 11));
+		lblNewLabel.setBounds(693, 74, 74, 26);
+		contentPane.add(lblNewLabel);
+		btnLimpiarTodo.setBounds(678, 52, 108, 105);
+		contentPane.add(btnLimpiarTodo);
 		
 		JLabel lbPlano = new JLabel("");
 		lbPlano.setIcon(new ImageIcon(Ventana.class.getResource("/img/Captura1.png")));
 		lbPlano.setBounds(25, 181, 961, 479);
 		contentPane.add(lbPlano);
+		
+		JLabel lblNewLabel_5 = new JLabel("Univ. Gimena Choque Quisbert");
+		lblNewLabel_5.setFont(new Font("Sitka Subheading", Font.PLAIN, 20));
+		lblNewLabel_5.setForeground(Color.BLACK);
+		lblNewLabel_5.setBounds(635, 153, 373, 35);
+		contentPane.add(lblNewLabel_5);
 		
 		JLabel lblFondo = new JLabel("");
 		lblFondo.setIcon(new ImageIcon(Ventana.class.getResource("/img/fondo.jpg")));
