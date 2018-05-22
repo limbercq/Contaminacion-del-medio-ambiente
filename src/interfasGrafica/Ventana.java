@@ -90,7 +90,7 @@ public class Ventana extends JFrame {
 		
 		lbArriba.setBounds(192, 493, 50, 50);
 		lbAbajo.setBounds(244, 426, 50, 50);
-		lbIzquierda.setBounds(136, 473, 39, 35);
+		lbIzquierda.setBounds(178, 479, 39, 35);
 		JLabel lblNewLabel_4 = new JLabel("Ingrese datos");
 		lblNewLabel_4.setFont(new Font("Poor Richard", Font.PLAIN, 34));
 		lblNewLabel_4.setBounds(36, 198, 224, 50);
@@ -249,22 +249,19 @@ public class Ventana extends JFrame {
 				int p[][]=new int [4][9] ; 
 				int q[][]=new int [3][9] ; 
 				
-				p[0][0]=220; p[0][1]=237; p[0][2]=297; p[0][3]=327; p[0][4]=393; p[0][5]=500; p [0][6]=659; p [0][7]=860 ; p [0][8]=920;
-				// 10 20 50 100 150
-				p[1][0]=439; p[1][1]=391; p[1][2]=327; p[1][3]=269; p[1][4]=251; p [1][5]=177;
+				p[0][0]=220; p[0][1]=237; p[0][2]=280; p[0][3]=327; p[0][4]=393; p[0][5]=500; p [0][6]=659; p [0][7]=860 ; p [0][8]=920;
+				
 				// 1 5 10 50 100 150 
 				p[2][0]=190; p[2][1]=173; p[2][2]=155; p[2][3]=177; p[2][4]=80;
 				p[3][0]=543; p[3][1]=560; p[3][2]=577; p[3][3]=605; p[3][4]=641;
 				
 				q[0][0]=1; q[0][1]=2; q[0][2]=5; q[0][3]=10; q[0][4]=20; q[0][5]=50; q [0][6]=100; q [0][7]=150 ; 
 				
-				q[1][0]=10; q[1][1]=20; q[1][2]=50; q[1][3]=100; q[1][4]=150;
 				q[2][0]=1; q[2][1]=5; q[2][2]=50; q[2][3]=100; q[2][4]=150;
 				int i=1;boolean sw=false;
 				if(rx!=0) {
 					
-					while(i<9 & sw==false) {
-						System.out.println(rx+" <= "+q[0][i-1]+" __ "+i);
+					while(i<9 & sw==false) {						
 						if(rx<=150) {
 							if(rx<=q[0][i-1]) {
 								if(rx==q[0][i-1])
@@ -280,27 +277,35 @@ public class Ventana extends JFrame {
 					}
 				}else
 					rx=192;
-				
+				// eje z
+				// 10 20 50 100 150
+				p[1][0]=439; p[1][1]=391; p[1][2]=327; p[1][3]=269; p[1][4]=200; p [1][5]=177;
+				q[1][0]=10; q[1][1]=20; q[1][2]=50; q[1][3]=100; q[1][4]=150;
 				sw=false; i=0;
-				while(i<4 & sw==false) {
-					if(ry<=q[1][i]) {
-						if(ry==q[1][i])
-							ry=p[1][i];
-						else
-							ry=p[1][i]-((p[1][i]-p[1][i+1])/2);
-						sw=true;
+				if(rz!=0) {
+					if(rz<=150) {
+						while(i<5 & sw==false) {
+							System.out.println(rz+" <= "+q[1][i]+" __ "+i);
+							if(rz<=q[1][i]) {
+								if(rz==q[1][i])
+									rz=p[1][i];
+								else
+									rz=p[1][i]+((p[1][i]-p[1][i+1])/2);
+								sw=true;
+							}
+							i++;
+						}
 					}
-					i++;
+					else rz=p [1][5]=177;
 				}
-				
-				
-				
-				System.out.println(rx);
+				else	
+					rz=479;
+				System.out.println(rz);							
 				
 				lbArriba.setBounds(rx, 492, 50, 50);
 				/*lbAbajo.setBounds(185, 445, 50, 50); 190*/
-				lbIzquierda.setBounds(175, ry, 39, 35);
-				Punto.setBounds(rx, 194, 25, 25);
+				lbIzquierda.setBounds(175, rz, 39, 35);
+				Punto.setBounds(rx, rz, 25, 25);
 			}
 			private boolean validarDouble() {
 				boolean sw=true;
