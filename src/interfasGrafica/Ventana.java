@@ -89,7 +89,7 @@ public class Ventana extends JFrame {
 		contentPane.add(lbIzquierda);
 		
 		lbArriba.setBounds(192, 493, 50, 50);
-		lbAbajo.setBounds(244, 426, 50, 50);
+		lbAbajo.setBounds(192, 451, 50, 50);
 		lbIzquierda.setBounds(178, 479, 39, 35);
 		JLabel lblNewLabel_4 = new JLabel("Ingrese datos");
 		lblNewLabel_4.setFont(new Font("Poor Richard", Font.PLAIN, 34));
@@ -208,6 +208,8 @@ public class Ventana extends JFrame {
 		Resultado.setEditable(false);
 		Resultado.setBounds(427, 213, 144, 55);
 		contentPane.add(Resultado);
+		///////////////////////////////////////
+	
 		
 		JButton btnCalcular = new JButton("Calcular");
 		btnCalcular.setFont(new Font("Poor Richard", Font.PLAIN, 17));
@@ -250,14 +252,9 @@ public class Ventana extends JFrame {
 				int q[][]=new int [3][9] ; 
 				
 				p[0][0]=220; p[0][1]=237; p[0][2]=280; p[0][3]=327; p[0][4]=393; p[0][5]=500; p [0][6]=659; p [0][7]=860 ; p [0][8]=920;
-				
-				// 1 5 10 50 100 150 
-				p[2][0]=190; p[2][1]=173; p[2][2]=155; p[2][3]=177; p[2][4]=80;
-				p[3][0]=543; p[3][1]=560; p[3][2]=577; p[3][3]=605; p[3][4]=641;
-				
+								
 				q[0][0]=1; q[0][1]=2; q[0][2]=5; q[0][3]=10; q[0][4]=20; q[0][5]=50; q [0][6]=100; q [0][7]=150 ; 
 				
-				q[2][0]=1; q[2][1]=5; q[2][2]=50; q[2][3]=100; q[2][4]=150;
 				int i=1;boolean sw=false;
 				if(rx!=0) {
 					
@@ -278,14 +275,14 @@ public class Ventana extends JFrame {
 				}else
 					rx=192;
 				// eje z
-				// 10 20 50 100 150
+				// 10 20 50 100 150 
 				p[1][0]=439; p[1][1]=391; p[1][2]=327; p[1][3]=269; p[1][4]=200; p [1][5]=177;
 				q[1][0]=10; q[1][1]=20; q[1][2]=50; q[1][3]=100; q[1][4]=150;
+
 				sw=false; i=0;
 				if(rz!=0) {
 					if(rz<=150) {
-						while(i<5 & sw==false) {
-							System.out.println(rz+" <= "+q[1][i]+" __ "+i);
+						while(i<5 & sw==false) {						
 							if(rz<=q[1][i]) {
 								if(rz==q[1][i])
 									rz=p[1][i];
@@ -300,12 +297,43 @@ public class Ventana extends JFrame {
 				}
 				else	
 					rz=479;
-				System.out.println(rz);							
+				// eje y
+				// 1 5 10 50 100 150 36, 586
+				p[2][0]=160; p[2][1]=138; p[2][2]=125; p[2][3]=90; p[2][4]=52;
+				p[3][0]=472; p[3][1]=489; p[3][2]=506; p[3][3]=533; p[3][4]=568;
 				
+				q[2][0]=1; q[2][1]=5; q[2][2]=10; q[2][3]=50; q[2][4]=100;
+				int ry2=0;
+				i=0; sw=false;int c=20,s=rz;
+				
+				if(ry!=0) {
+					if(ry<=100) {
+						while(i<5 & sw==false) {
+							System.out.println(ry+"<="+q[2][i]);
+							if(ry<=q[2][i]) {
+								s=s+c;
+								ry=p[2][i];
+								ry2=p[3][i];								
+								sw=true;
+							}
+							c+=20;
+							i++;
+						}
+					}else {
+						ry=36;
+						ry2=586;
+					}
+				}else {
+					ry=192;
+					ry2=441;
+				}
+				
+				
+				System.out.println(ry+" --- "+ry2);
 				lbArriba.setBounds(rx, 492, 50, 50);
-				/*lbAbajo.setBounds(185, 445, 50, 50); 190*/
+				lbAbajo.setBounds(ry, ry2, 50, 50);
 				lbIzquierda.setBounds(175, rz, 39, 35);
-				Punto.setBounds(rx, rz, 25, 25);
+				Punto.setBounds(rx, s, 25, 25);
 			}
 			private boolean validarDouble() {
 				boolean sw=true;
@@ -404,7 +432,7 @@ public class Ventana extends JFrame {
 		contentPane.add(lbPlano);
 		
 		JLabel lblNewLabel_5 = new JLabel("Univ. Gimena Choque Quisbert");
-		lblNewLabel_5.setFont(new Font("Sitka Subheading", Font.PLAIN, 20));
+		lblNewLabel_5.setFont(new Font("Sitka Subheading", Font.PLAIN, 26));
 		lblNewLabel_5.setForeground(Color.BLACK);
 		lblNewLabel_5.setBounds(635, 153, 373, 35);
 		contentPane.add(lblNewLabel_5);
