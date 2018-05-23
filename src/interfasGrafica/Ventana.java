@@ -204,9 +204,10 @@ public class Ventana extends JFrame {
 		
 		
 		JTextArea Resultado = new JTextArea();
+		Resultado.setFont(new Font("Monospaced", Font.BOLD | Font.ITALIC, 19));
 		Resultado.setOpaque(false);
 		Resultado.setEditable(false);
-		Resultado.setBounds(427, 213, 144, 55);
+		Resultado.setBounds(427, 213, 318, 109);
 		contentPane.add(Resultado);
 		///////////////////////////////////////
 	
@@ -227,11 +228,15 @@ public class Ventana extends JFrame {
 					if(validarDouble()) {
 						codigo c=new codigo();
 						res[1]=c.y(v[3], comboEst.getSelectedIndex());
-						res[2]=c.z(v[3], comboEst.getSelectedIndex());
+								
+								
+					res[2]=c.z(v[3], comboEst.getSelectedIndex());
 						res[0]=c.calcular(v[0], v[1], v[2], comboEst.getSelectedIndex(), v[4], v[5]);
+						String s[]=new String [6];
+						s[0]="Cx,y,z  = "; s[1]="𝜎y = ";s[2]="𝜎z = ";s[3]=" ug/m3";s[4]=" m";s[5]=" m";
 						Resultado.setText("");
 						for(int i=0;i<3;i++) {								
-							Resultado.setText(Resultado.getText()+res[i]+"\n");
+							Resultado.setText(Resultado.getText()+s[i]+res[i]+s[i+3]+"\n");
 						}
 						posicion(v[3],v[4],v[5]);
 					}else {
@@ -427,13 +432,14 @@ public class Ventana extends JFrame {
 		contentPane.add(btnLimpiarTodo);
 		
 		JLabel lbPlano = new JLabel("");
+		lbPlano.setFont(lbPlano.getFont().deriveFont(lbPlano.getFont().getStyle() | Font.ITALIC));
 		lbPlano.setIcon(new ImageIcon(Ventana.class.getResource("/img/Captura1.png")));
 		lbPlano.setBounds(25, 181, 961, 479);
 		contentPane.add(lbPlano);
 		
 		JLabel lblNewLabel_5 = new JLabel("Univ. Gimena Choque Quisbert");
 		lblNewLabel_5.setFont(new Font("Sitka Subheading", Font.PLAIN, 26));
-		lblNewLabel_5.setForeground(Color.BLACK);
+		lblNewLabel_5.setForeground(Color.WHITE);
 		lblNewLabel_5.setBounds(635, 153, 373, 35);
 		contentPane.add(lblNewLabel_5);
 		
